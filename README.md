@@ -1,7 +1,8 @@
-# Lobby Stop Countdown Plugin
+#  Stopcountdown command Plugin for Minecraft
 
-A simple lobby plugin for [Paper](https://papermc.io/) servers.  
+A simple Minecraft plugin for [Paper](https://papermc.io/) servers.  
 It provides a single command to start a shutdown countdown.
+Built with [CommandAPI **10.1.1**](https://commandapi.jorel.dev/).
 
 ## Features
 - Works on all Paper servers
@@ -14,10 +15,6 @@ It provides a single command to start a shutdown countdown.
 
 Starts a shutdown countdown with the given number of seconds.
 
-## Installation
-1. Download the latest release `.jar`.
-2. Put it in your `plugins/` folder.
-3. Restart your server.
 
 ## Example
 
