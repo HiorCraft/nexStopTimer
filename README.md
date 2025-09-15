@@ -1,6 +1,6 @@
 #  Stopcountdown command Plugin for Minecraft
 
-A simple Minecraft plugin for [Paper](https://papermc.io/) servers.  
+A simple Minecraft plugin for [Paper](https://papermc.io/) servers (Minecraft **1.21.7**).  
 It provides a single command to start a shutdown countdown.
 Built with [CommandAPI **10.1.1**](https://commandapi.jorel.dev/).
 
