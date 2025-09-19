@@ -6,17 +6,16 @@ import dev.jorel.commandapi.arguments.IntegerArgument;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class StopCommand extends CommandAPICommand {
+public class RestartCommand extends CommandAPICommand {
 
-    public StopCommand(String commandName) {
+    public RestartCommand(String commandName) {
         super(commandName);
 
-        withPermission("stoptimer.stop");
+        withPermission("restarttimer.stop");
         withArguments(new IntegerArgument("seconds"));
 
         executesPlayer((player, args) -> {
@@ -26,7 +25,7 @@ public class StopCommand extends CommandAPICommand {
             player.sendMessage(
                     Component.text("Der Server wird in ", NamedTextColor.DARK_AQUA)
                             .append(Component.text(seconds + " Sekunden ", NamedTextColor.YELLOW))
-                            .append(Component.text("heruntergefahren!", NamedTextColor.DARK_AQUA))
+                            .append(Component.text("Neustarte!", NamedTextColor.DARK_AQUA))
             );
 
             Bukkit.getGlobalRegionScheduler().runAtFixedRate(
@@ -36,7 +35,7 @@ public class StopCommand extends CommandAPICommand {
 
                         if (time <= 0) {
                             for (Player p : Bukkit.getOnlinePlayers()) {
-                                p.sendActionBar(Component.text("Server stoppt jetzt!", NamedTextColor.RED));
+                                p.sendActionBar(Component.text("Server Restart!", NamedTextColor.RED));
 
                                 // 🎆 Finale Rakete
                                 p.playSound(
@@ -47,7 +46,7 @@ public class StopCommand extends CommandAPICommand {
                                 );
                             }
                             task.cancel();
-                            Bukkit.shutdown();
+                            Bukkit.restart();
                             return;
                         }
 
@@ -57,7 +56,7 @@ public class StopCommand extends CommandAPICommand {
                             for (Player p : Bukkit.getOnlinePlayers()) {
                                 p.playSound(
                                         p.getLocation(),
-                                        Sound.BLOCK_NOTE_BLOCK_PLING,
+                                        org.bukkit.Sound.BLOCK_NOTE_BLOCK_PLING,
                                         1.0f,
                                         2.0f
                                 );
@@ -67,7 +66,7 @@ public class StopCommand extends CommandAPICommand {
 
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             p.sendActionBar(
-                                    Component.text("Stop: ", NamedTextColor.AQUA)
+                                    Component.text("Restart: ", NamedTextColor.AQUA)
                                             .append(Component.text(time, NamedTextColor.GREEN))
                                             .append(Component.text("s", NamedTextColor.GREEN))
                             );
@@ -79,3 +78,4 @@ public class StopCommand extends CommandAPICommand {
         });
     }
 }
+
